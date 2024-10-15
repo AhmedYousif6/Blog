@@ -216,7 +216,7 @@ export default function DashProfile() {
           onChange={handleChange}
         />
         <Button type='submit' gradientDuoTone='purpleToBlue' outline disabled={loading || imageFileUploading}>
-          {loading ? 'loading...' : 'Update'}
+          {loading ? 'Loading...' : 'Update'}
         </Button>
         {
           currentUser.isAdmin && (
