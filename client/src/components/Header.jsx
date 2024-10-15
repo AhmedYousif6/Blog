@@ -5,14 +5,12 @@ import { FaMoon, FaSun } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { toggleTheme } from '../redux/theme/themeSlice.js';
 import { signoutSuccess } from '../redux/user/userSlice.js';
-import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
   const path = useLocation().pathname;
   const { currentUser } = useSelector(state => state.user);
   const { theme } = useSelector(state => state.theme);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSignout = async () => {
     try {
@@ -24,7 +22,6 @@ export default function Header() {
         console.log(data.message);
       } else {
         dispatch(signoutSuccess());
-        navigate('/sign-in');
       }
     } catch (error) {
       console.log(error.message);
