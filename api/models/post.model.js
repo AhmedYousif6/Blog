@@ -28,6 +28,14 @@ const postSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    likes: {
+        type: Array,
+        default: [],
+    },
+    numOfLikes: {
+        type: Number,
+        default: 0,
+    },
 }, { timestamps: true });
 
 const Post = mongoose.model('post', postSchema);
