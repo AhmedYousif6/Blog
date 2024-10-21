@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Spinner, Button } from 'flowbite-react';
-import CallToAction from '../components/CallToAction';
 import CommentSection from '../components/CommentSection';
 import PostCard from '../components/PostCard';
-import LikesAndCommentsPosts from '../components/LikesAndCommentsPosts';
+import CallToAction from '../components/CallToAction';
+import LikesPosts from '../components/LikesPosts';
 
 export default function PostPage() {
     const { postSlug } = useParams();
@@ -80,12 +80,11 @@ export default function PostPage() {
         <div className='p-3 max-w-2xl mx-auto w-full post-content'
             dangerouslySetInnerHTML={{__html: post && post.content}}>
         </div>
+        <LikesPosts post={post} />
+        <CommentSection postId={post._id} post={post} />
         <div className='max-w-4xl mx-auto w-full'>
             <CallToAction />
         </div>
-        <LikesAndCommentsPosts postId={post._id} />
-
-        <CommentSection postId={post._id}/>
         <div className='flex flex-col justify-center items-center mb-5'>
             <h1 className='text-xl mt-5'>Recent articles</h1>
             <div className='flex flex-wrap gap-5 mt-5 justify-center'>
@@ -95,4 +94,4 @@ export default function PostPage() {
         </div>
     </main>
   )
-}
+};
